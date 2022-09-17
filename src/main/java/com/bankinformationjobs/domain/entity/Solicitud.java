@@ -1,4 +1,4 @@
-package com.bankinformationjobs.domain;
+package com.bankinformationjobs.domain.entity;
 
 import lombok.*;
 
@@ -13,10 +13,10 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class Solicitudes implements Serializable {
+public class Solicitud implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_solicitud")
+    @Column(name = "id_solicitud", nullable = false, unique = true)
     private Integer idSolicitud;
 
     @ManyToOne
@@ -29,7 +29,7 @@ public class Solicitudes implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_servicio")
-    private Servicios servicios;
+    private Servicio servicio;
 
     @Column(name = "fecha")
     private Date fecha;
