@@ -1,8 +1,12 @@
-package com.bankinformationjobs.domain;
+package com.bankinformationjobs.domain.entity;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "profesional")
@@ -15,30 +19,52 @@ public class Profesional implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_profesional")
+    @Column(name = "id_profesional", nullable = false, unique = true)
     private Integer idProfesional;
 
+    @NotNull
+    @Length(max = 40)
     @Column(name = "nombre")
     private String nombre;
 
+    @NotNull
+    @Length(max = 40)
     @Column(name = "apellido")
     private String apellido;
 
+    @NotNull
+    @Length(max = 40)
     @Column(name = "profesion")
     private String profesion;
 
+    @NotNull
+    @Min(10)
     @Column(name = "telefono")
     private int telefono;
 
+    @NotNull
+    @NotBlank()
+    @Valid()
+    @Pattern(regexp = "^[^@]+@[^@]+\\.[a-zA-Z]{2,}$")
     @Column(name = "correo")
     private String correo;
 
+    @NotNull
+    @Length(max = 40)
     @Column(name = "ciudad")
     private String ciudad;
 
+    @NotNull
+    @Length(max = 40)
     @Column(name = "barrio")
     private String barrio;
 
+    @NotNull
+    @Length(max = 40)
     @Column(name = "direccion")
     private String direccion;
+
+    @NotNull
+    @Column(name = "imageUrl", length = 1000)
+    private String imageUrl;
 }
