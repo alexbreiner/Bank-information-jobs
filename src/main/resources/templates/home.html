@@ -61,17 +61,22 @@
 
 </header>
 
-<div class="container">
-    <h1>Listado de Profesionales</h1>
-    <div class="card" style="width: 18rem;" th:each="profesional:${profesionales}">
-        <img th:src="${profesional.imageUrl}"  class="card-img-top" alt="Aqui va una imagen">
-        <div class="card-body">
-            <h5 class="card-title" th:text="${profesional.nombre}" ></h5><h5 th:text="${profesional.apellido}" ></h5>
-            <p class="card-text" th:text="${profesional.profesion}"></p>
-            <a href="#" class="btn btn-primary" th:text="${profesional.ciudad}"></a>
+<div class="container d-flex">
+    <div class="row justify-conten-center">
+        <div class="col-md-6">
+            <h1>Listado de Profesionales</h1>
+            <div class="card" style="width: 18rem;" th:each="profesional:${profesionales}">
+                <img th:src="${profesional.imageUrl}"  class="card-img-top" alt="Aqui va una imagen">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${profesional.nombre}" ></h5><h5 th:text="${profesional.apellido}" ></h5>
+                    <p class="card-text" th:text="${profesional.profesion}"></p>
+                    <a href="#" class="btn btn-primary" th:text="${profesional.ciudad}"></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"

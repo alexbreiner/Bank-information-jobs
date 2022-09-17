@@ -23,4 +23,7 @@ public interface ProfesionalRepository extends JpaRepository<Profesional, Intege
      */
     Optional<Profesional>  findProfesionalByProfesion(String profesion);
 
+    Optional<Profesional> findProfesionalByNombre(String nombre);
+
+
 }

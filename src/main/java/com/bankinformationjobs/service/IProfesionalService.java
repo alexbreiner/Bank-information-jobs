@@ -7,8 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface ProfesionalService  {
+public interface IProfesionalService {
 
     ResponseEntity<ProfesionalDto> crearProfesional(ProfesionalDto profesionalDto);
 
@@ -16,9 +17,14 @@ public interface ProfesionalService  {
 
      List<Profesional> leerTodosProfesionals();
 
-     ResponseEntity<Profesional> actualizarProfesional(Profesional profesional);
+     ResponseEntity<ProfesionalDto> actualizarProfesional(ProfesionalDto profesionalDto);
 
-     List<Profesional> getProfesionalPorNombre(String nombreProfesional);
+     void eliminarProfesional(Integer id);
 
-     void eliminarProfesional(Long id);
+     List<ProfesionalDto> readList();
+
+     ResponseEntity<ProfesionalDto> search(String ciudad,  String profesion);
+
+     Optional<Profesional> searchForName(String nombre);
+
 }

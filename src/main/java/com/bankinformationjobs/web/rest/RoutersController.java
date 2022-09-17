@@ -1,7 +1,7 @@
 package com.bankinformationjobs.web.rest;
 
 import com.bankinformationjobs.domain.entity.Profesional;
-import com.bankinformationjobs.service.ProfesionalService;
+import com.bankinformationjobs.service.IProfesionalService;
 import com.bankinformationjobs.service.dto.ProfesionalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-public class indexController {
+public class RoutersController {
 
     @Autowired
-    private ProfesionalService profesionalService;
+    private IProfesionalService profesionalService;
 
     @GetMapping({"/home", "/"})
     public String index(Model modelo) {
@@ -48,9 +48,6 @@ public class indexController {
 
     @GetMapping("/home/saveProfesional")
     public String mostrarFormularioProfesional(Model modelo) {
-      //  ProfesionalDto profesionalDto = new ProfesionalDto();
-      //  profesionalService.crearProfesional(profesionalDto);
-       // modelo.addAttribute("profesionalDto", profesionalDto);
         return "crearProfesional";
     }
 
