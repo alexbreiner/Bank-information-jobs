@@ -5,11 +5,14 @@ import com.bankinformationjobs.service.IProfesionalService;
 import com.bankinformationjobs.service.dto.ProfesionalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import java.util.*;
+
 
 @Controller
 public class RoutersController {
@@ -41,8 +44,18 @@ public class RoutersController {
         return "profesionalesPaginados";
     }
 
+    @GetMapping("buscarProfesional")
+    public String filterProfesional() {
+        return "buscarProfesional";
+    }
+
     @GetMapping("/home/buscarProfesional")
-    public String buscarProfesional(Model modelo) {
+    public String buscarProfesional(Model modelo, @Param("palabraClave") String palabraClave) {
+        List<Profesional> listaProfesionales = profesionalService.listAll(palabraClave);
+
+        modelo.addAttribute("listaProfesionales", listaProfesionales);
+        modelo.addAttribute("palabraClave", palabraClave);
+
         return "buscarProfesional";
     }
 
@@ -54,6 +67,23 @@ public class RoutersController {
     @PostMapping("/saveProfesional")
     public String guardarProfesional(@ModelAttribute("profesionalDto") ProfesionalDto profesionalDto) {
         profesionalService.crearProfesional(profesionalDto);
+        return "redirect:/home";
+    }
+
+    @RequestMapping("/editarProfesional/{id}")
+    public ModelAndView mostrarFormularioActualizarProfesional(@PathVariable(name = "id") Integer id) {
+        ModelAndView modelo = new ModelAndView("editarProfesional");
+
+        Optional<Profesional> profesional = profesionalService.getProfesionalById(id);
+        modelo.addObject("profesional", profesional);
+
+        return modelo;
+
+    }
+
+    @RequestMapping("/eliminar/{id}")
+    public String eliminarProfesionl(@PathVariable(name = "id") Integer id ) {
+        profesionalService.eliminarProfesional(id);
         return "redirect:/home";
     }
 

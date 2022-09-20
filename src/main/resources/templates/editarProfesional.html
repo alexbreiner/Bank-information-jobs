@@ -38,7 +38,7 @@
                             <a class="nav-link active text-black" aria-current="page" href="Nuevo">Buscar</a>
                         </li>
                         <li class="nav-item text-white">
-                            <a class="nav-link text-black" th:href="@{/crearProfesional}">Personas</a>
+                            <a class="nav-link text-black" th:href="@{home/saveProfesional}" > Personas</a>
                         </li>
                         <li class="nav-item text-white">
                             <a class="nav-link text-black" href="#">Trabajos</a>
@@ -69,49 +69,54 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-                <h1 class="text-center">Registro de Profesional</h1>
+                <h1 class="text-center">Editar de Profesional</h1>
                 <div class="card-body">
-                    <form th:action="@{/saveProfesional}" th:object="${profesionalDto}"  method="POST">
+                    <form th:action="@{/saveProfesional}" th:object="${profesional}"  method="POST">
                         <div class="form-group">
-                            <label type="text">nombre</label>
-                            <input type="text" name="nombre" class="form-control" required>
+                            <label type="number">Id profesional</label>
+                            <input type="number" name="idProfesional" disabled="disabled" th:field="*{profesional.idProfesional}" class="form-control"
+                                   readonly="readonly">
                         </div>
                         <div class="form-group">
-                            <label type="text">apellido</label>s
-                            <input type="text" name="apellido" class="form-control" required>
+                            <label type="text">nombre</label>
+                            <input type="text" name="nombre"  th:field="*{profesional.nombre}"  class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label type="text">apellido</label>
+                            <input type="text" name="apellido" th:field="*{profesional.apellido}" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label type="number">telefono</label>
-                            <input type="number" name="telefono" class="form-control" required>
+                            <input type="number" name="telefono"  th:field="*{profesional.telefono}"  class="form-control" required>
                         </div>
 
                         <div class="form-group">
                             <label type="text">Profesion</label>
-                            <input type="text" name="profesion"  class="form-control" required>
+                            <input type="text" name="profesion"  th:field="*{profesional.profesion}"  class="form-control" required>
                         </div>
 
                         <div class="form-group">
                             <label type="text">correo</label>
-                            <input type="email" name="correo"  class="form-control" required>
+                            <input type="email" name="correo" th:field="*{profesional.correo}"  class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label type="text">Ciudad</label>
-                            <input type="text" name="ciudad" class="form-control" required>
+                            <input type="text" name="ciudad" th:field="*{profesional.ciudad}" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label type="text">barrio</label>
-                            <input type="text" name="barrio"  class="form-control" required>
+                            <input type="text" name="barrio"  th:field="*{profesional.barrio}" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label type="text">Direccion</label >
-                            <input type="text" name="direccion" class="form-control" required>
+                            <input type="text" name="direccion" th:field="*{profesional.direccion}"  class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label type="text">imageUrl</label>
-                            <input type="text" name="imageUrl"  class="form-control" required>
+                            <input type="text" name="imageUrl" th:field="*{profesional.imageUrl}"  class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-info col-2">Guardar.</button>
+                            <button type="submit" disabled="disabled" class="btn btn-info col-2">Guardar.</button>
                             <a > Back to Employee List</a>
                         </div>
                     </form>

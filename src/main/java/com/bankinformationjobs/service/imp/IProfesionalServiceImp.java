@@ -27,7 +27,6 @@ public class IProfesionalServiceImp implements IProfesionalService {
 
     @Override
     public ResponseEntity<ProfesionalDto> crearProfesional(ProfesionalDto profesionalDto) {
-
         Profesional profesional = ProfesionalMapper.getProfesionalFromProfesionalDto(profesionalDto);
 
         if (Objects.isNull(profesional) || Objects.isNull(profesional.getIdProfesional())) {
@@ -97,9 +96,27 @@ public class IProfesionalServiceImp implements IProfesionalService {
 
     @Override
     public Optional<Profesional> searchForName(String nombre) {
-        if (Objects.isNull(nombre)) {
+        if (Objects.isNull(nombre.toUpperCase())) {
             throw new RuntimeException("No coincide la información solicitada.");
         }
         return  profesionalRepository.findProfesionalByNombre(nombre);
     }
+
+    @Override
+    public Optional<Profesional> getProfesionalById(Integer id) {
+        return profesionalRepository.findById(id);
+    }
+
+    @Override
+    public List<Profesional> listAll(String nombreAtributo) {
+
+        //if (Objects.isNull(nombreAtributo.toUpperCase()) || nombreAtributo.toUpperCase().equals(null)) {
+         //   throw new RuntimeException("Informacion no encontrada, Intente de nuevo.");
+        //} else if (Objects.nonNull(nombreAtributo.toUpperCase())) {
+            return profesionalRepository.findAll(nombreAtributo);
+        //}
+       // return profesionalRepository.findAll();
+    }
+
+
 }

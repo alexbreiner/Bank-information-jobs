@@ -59,20 +59,66 @@
     </nav>
 </header>
 
-<div class="container">
+<div class="container text-center">
     <div class="row g-3">
-        <div class="col-sm-2">
-            <input type="text" class="form-control" placeholder="Ciudad" aria-label="City">
-        </div>
-        <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Buscar profesion" aria-label="State">
-        </div>
-        <div class="col-sm-3">
-            <button class="btn btn-primary">Buscar</button>
-        </div>
+        <form class="form-inline" th:action="@{/home/buscarProfesional}">
+            <div class="form-group  col-sm-2">
+               <!---<input type="text" class="form-control" placeholder="Ciudad" aria-label="City">-->
+                <label>Buscar:</label>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="text" name="palabraClave" id="palabraClave" class="form-control" th:value="${palabraClave}"
+                       placeholder="Bigite el valor a buscar" required aria-label="State">
+            </div>
+            <div class="col-sm-3">
+                <input type="submit" class="btn btn-primary " value="Buscar">
+                <input type="submit" class="btn btn-warnning mb-2" value="Limpiar">
+            </div>
+        </form>
     </div>
     <div class="row py-3">
-        <div class="col-md-12 col-lg-6 col-12 col-sm-12">
+        <div class="container justify-content-center pt-4">
+            <h1 class="mt-4 text-left">Listado de Profesionales</h1>
+            <div th:if="${listaProfesionales != null}">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>IdProfesional</th>
+                            <th>Nombre</th>
+                            <th>Profesión</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Dirección</th>
+                            <th>Ciudad</th>
+                            <th>Barrio</th>
+                            <td>Acciones</td>
+                        </tr>
+                    </thead>
+                    <tr th:each="profesional : ${listaProfesionales}" th:if="${listaProfesionales}">
+                        <td th:text="${profesional.idProfesional}"></td>
+                        <td th:text="${profesional.nombre}"></td>
+                        <td th:text="${profesional.profesion}"></td>
+                        <td th:text="${profesional.correo}"></td>
+                        <td th:text="${profesional.telefono}"></td>
+                        <td th:text="${profesional.direccion}"></td>
+                        <td th:text="${profesional.ciudad}"></td>
+                        <td th:text="${profesional.barrio}"></td>
+
+                        <td>
+                            <a class="btn btn-success"   type="submit" th:href="@{'/editarProfesional/' + ${profesional.idProfesional}}" >View</a>
+                            <a class="btn btn-danger"  th:href="@{'/eliminar/' + ${profesional.idProfesional}}" >Delete</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <h1 th:if="${listaProfesionales.isEmpty()}">
+                <div class="alert alert-warnning" type="alert">
+                    La lista de personas está vacía.
+                </div>
+            </h1>
+            <!--
+
+                    <div class="col-md-12 col-lg-6 col-12 col-sm-12">
             <div class="card" >
                 <img src="" class="card-img-top" alt="Aqui va una imagen">
 
@@ -84,6 +130,21 @@
                     <a href="#" class="btn btn-primary">Ver Perfil</a>
                 </div>
             </div>
+        </div>
+
+                        <div  class="card"  th:each="profesional:${listaProfesionales}">
+                <p th:if="*{listaProfesionales}" ></p>
+                <img th:src="${profesional.imageUrl}"  class="card-img-top" alt="Aqui va una imagen">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${profesional.nombre}" ></h5>
+                    <h5 th:text="${profesional.apellido}"></h5>
+                    <p class="card-text" th:text="${profesional.profesion}"></p>
+                    <a href="#" class="btn btn-primary" th:text="${profesional.ciudad}"></a>
+                    <a class="btn btn-success"   type="submit" th:href="@{'/editarProfesional/' + ${profesional.idProfesional}}" >View</a>
+                    <a class="btn btn-danger"  th:href="@{'/eliminar/' + ${profesional.idProfesional}}" >Eliminar</a>
+                </div>
+            </div>
+            --->
         </div>
     </div>
 </div>

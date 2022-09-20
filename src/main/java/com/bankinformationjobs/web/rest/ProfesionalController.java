@@ -54,4 +54,5 @@ public class ProfesionalController {
     public Optional<Profesional> searchProfesionalsForName(@RequestParam(value = "nombre") String nombre) {
         return profesionalService.searchForName(nombre);
     }
+
 }
