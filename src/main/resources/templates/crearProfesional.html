@@ -73,6 +73,10 @@
                 <div class="card-body">
                     <form th:action="@{/saveProfesional}" th:object="${profesionalDto}"  method="POST">
                         <div class="form-group">
+                            <label type="number">Id profesional</label>
+                            <input type="number" name="idProfesional" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label type="text">nombre</label>
                             <input type="text" name="nombre" class="form-control" required>
                         </div>

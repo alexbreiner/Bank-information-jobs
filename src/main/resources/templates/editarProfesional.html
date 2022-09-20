@@ -69,55 +69,51 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-                <h1 class="text-center">Editar de Profesional</h1>
+                <h1 class="text-center">View  Profesional</h1>
                 <div class="card-body">
                     <form th:action="@{/saveProfesional}" th:object="${profesional}"  method="POST">
                         <div class="form-group">
                             <label type="number">Id profesional</label>
-                            <input type="number" name="idProfesional" disabled="disabled" th:field="*{profesional.idProfesional}" class="form-control"
+                            <input type="number" name="idProfesional" th:field="*{profesional.idProfesional}" disabled="disabled" class="form-control"
                                    readonly="readonly">
                         </div>
                         <div class="form-group">
                             <label type="text">nombre</label>
-                            <input type="text" name="nombre"  th:field="*{profesional.nombre}"  class="form-control" required>
+                            <input type="text" name="nombre"  readonly="readonly" disabled="disabled" th:field="*{nombre}" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label type="text">apellido</label>
-                            <input type="text" name="apellido" th:field="*{profesional.apellido}" class="form-control" required>
+                            <input type="text" name="apellido" readonly="readonly" disabled="disabled"  th:field="*{apellido}" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label type="number">telefono</label>
-                            <input type="number" name="telefono"  th:field="*{profesional.telefono}"  class="form-control" required>
+                            <input type="number" name="telefono"  readonly="readonly" disabled="disabled"  th:field="*{telefono}"  class="form-control" required>
                         </div>
 
                         <div class="form-group">
                             <label type="text">Profesion</label>
-                            <input type="text" name="profesion"  th:field="*{profesional.profesion}"  class="form-control" required>
+                            <input type="text" name="profesion" readonly="readonly"  disabled="disabled"  th:field="*{profesion}" class="form-control" required>
                         </div>
 
                         <div class="form-group">
                             <label type="text">correo</label>
-                            <input type="email" name="correo" th:field="*{profesional.correo}"  class="form-control" required>
+                            <input type="email" name="correo"  readonly="readonly" disabled="disabled"  th:field="*{correo}" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label type="text">Ciudad</label>
-                            <input type="text" name="ciudad" th:field="*{profesional.ciudad}" class="form-control" required>
+                            <input type="text" name="ciudad"  readonly="readonly" disabled="disabled"  th:field="*{ciudad}" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label type="text">barrio</label>
-                            <input type="text" name="barrio"  th:field="*{profesional.barrio}" class="form-control" required>
+                            <input type="text" name="barrio"  readonly="readonly" disabled="disabled"  th:field="*{barrio}" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label type="text">Direccion</label >
-                            <input type="text" name="direccion" th:field="*{profesional.direccion}"  class="form-control" required>
+                            <input type="text" name="direccion"readonly="readonly" disabled="disabled"  th:field="*{direccion}"  class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label type="text">imageUrl</label>
-                            <input type="text" name="imageUrl" th:field="*{profesional.imageUrl}"  class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" disabled="disabled" class="btn btn-info col-2">Guardar.</button>
-                            <a > Back to Employee List</a>
+                            <input type="text" name="imageUrl" readonly="readonly" disabled="disabled" th:field="*{imageUrl}" class="form-control" required>
                         </div>
                     </form>
                 </div>
