@@ -27,4 +27,7 @@ public interface IProfesionalService {
 
      Optional<Profesional> searchForName(String nombre);
 
+     Optional<Profesional> getProfesionalById(Integer id);
+
+     List<Profesional> listAll(String nombreAtributo);
 }
