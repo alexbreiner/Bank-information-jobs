@@ -39,7 +39,8 @@ public class Profesional implements Serializable {
     private String profesion;
 
     @NotNull
-    @Min(10)
+    @Min(1)
+    @Max(10)
     @Column(name = "telefono")
     private int telefono;
 

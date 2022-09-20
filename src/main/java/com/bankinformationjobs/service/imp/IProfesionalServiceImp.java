@@ -29,9 +29,9 @@ public class IProfesionalServiceImp implements IProfesionalService {
     public ResponseEntity<ProfesionalDto> crearProfesional(ProfesionalDto profesionalDto) {
         Profesional profesional = ProfesionalMapper.getProfesionalFromProfesionalDto(profesionalDto);
 
-        if (Objects.isNull(profesional) || Objects.isNull(profesional.getIdProfesional())) {
+       /* if (Objects.isNull(profesional) || Objects.isNull(profesional.getIdProfesional())) {
             throw new RuntimeException("Profesional no encontrado.");
-        }
+        }*/
 
         if (profesionalRepository.findById(profesionalDto.getIdProfesional()).isPresent()) {
             return new ResponseEntity("El codigo del profesional ya existe", HttpStatus.BAD_REQUEST);
