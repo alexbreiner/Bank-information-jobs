@@ -1,8 +1,6 @@
 package com.bankinformationjobs.domain.entity;
 
-
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,12 +13,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(name = "username")
     private String username;
+    @Column(name = "password")
     private String password;
-
+    @Column(name = "paasswordConfirm")
     @Transient
-    private String paasswordConfirm;
+    private String passwordConfirm;
 
     @ManyToMany
     private Set<Role> roles;
