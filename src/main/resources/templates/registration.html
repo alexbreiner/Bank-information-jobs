@@ -17,7 +17,7 @@
         <h2 class="form-signin-heading">Create your account</h2>
         <div class="form-group">
             <input type="text" th:field="*{username}" class="form-control" placeholder="Username"
-                   autofocus="true">
+                   autofocus="true" required minlength="6">
             <!-- <span class="has-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span> -->
         </div>
 

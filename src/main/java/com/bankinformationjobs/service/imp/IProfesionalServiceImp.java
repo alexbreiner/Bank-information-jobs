@@ -33,12 +33,12 @@ public class IProfesionalServiceImp implements IProfesionalService {
             throw new RuntimeException("Profesional no encontrado.");
         }*/
 
-        if (profesionalRepository.findById(profesionalDto.getIdProfesional()).isPresent()) {
-            return new ResponseEntity("El codigo del profesional ya existe", HttpStatus.BAD_REQUEST);
-        } else {
+        // if (profesionalRepository.findById(profesionalDto.getIdProfesional()).isPresent()) {
+        //     return new ResponseEntity("El codigo del profesional ya existe", HttpStatus.BAD_REQUEST);
+        // } else {
           return new ResponseEntity(ProfesionalMapper.getProfesionalDtoFromProfesional(profesionalRepository.save(profesional)), HttpStatus.OK);
         }
-    }
+    
 
     @Override
     public Page<ProfesionalDto> listarProfesionalesPaginados(Integer pageSize, Integer pageNumber) {
