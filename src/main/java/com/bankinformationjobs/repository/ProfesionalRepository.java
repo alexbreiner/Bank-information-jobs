@@ -28,9 +28,19 @@ public interface ProfesionalRepository extends JpaRepository<Profesional, Intege
 
     Optional<Profesional> findProfesionalByNombre(String nombre);
 
-    @Query("SELECT P FROM Profesional P WHERE "
-            + " CONCAT(P.nombre, P.profesion, P.ciudad, P.telefono, P.apellido, P.barrio, P.direccion, P.correo)"
-            + " LIKE %?1%")
+    // @Query("SELECT P FROM Profesional P WHERE "
+    //         + " CONCAT(P.nombre, P.profesion, P.ciudad, P.telefono, P.apellido, P.barrio, P.direccion, P.correo)"
+    //         + " LIKE %?1%")
+    //  List<Profesional> findAll(@Param("nombreAtributo") String nombreAtributo);
+
+     @Query("SELECT p FROM Profesional p WHERE p.nombre LIKE %?1%"
+     +"OR p.profesion LIKE %?1%"
+     +"OR p.ciudad LIKE %?1%"
+     +"OR p.telefono LIKE %?1%"
+     +"OR p.apellido LIKE %?1%"
+     +"OR p.barrio LIKE %?1%"
+     +"OR p.direccion LIKE %?1%"
+     +"OR p.correo LIKE %?1%")
      List<Profesional> findAll(@Param("nombreAtributo") String nombreAtributo);
 
 }

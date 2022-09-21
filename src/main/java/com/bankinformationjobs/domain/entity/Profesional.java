@@ -6,7 +6,6 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "profesional")
@@ -39,10 +38,10 @@ public class Profesional implements Serializable {
     private String profesion;
 
     @NotNull
-    @Min(1)
+    @Min(10)
     @Max(10)
     @Column(name = "telefono")
-    private int telefono;
+    private String telefono;
 
     @NotNull
     @NotBlank()
