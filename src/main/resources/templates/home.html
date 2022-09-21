@@ -1,30 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon"  type="image/png" href="/img/businessman.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bank Information Jobs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link href="../static/index.css" rel="stylesheet">
-    <style>
-        .title {
-            font-family: 'Inter';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 18px;
-            color: #06A2FF !important;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-feature-settings: 'salt' on, 'liga' off;
-        }
-
-    </style>
+    <link href="/css/main.css" rel="stylesheet">
 </head>
-
 <body>
 <header>
     <nav class="navbar navbar-expand-lg ">
@@ -64,6 +50,14 @@
 
 <div class="container">
     <div class="row">
+        <div sec:authorize="isAuthenticated()">
+            <form id="logoutForm" method="POST" th:action="@{/logout}">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+            <h2>Welcome <span sec:authentication="name"></span> | <a class="btn btn-primary" onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+        </div>
+    </div>
+    <!--div-- class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center pt-4">
             <h1>Listado de Profesionales</h1>
             <div class="card" style="width: 18rem;" th:each="profesional:${profesionales}">
@@ -73,24 +67,69 @@
                     <h5 th:text="${profesional.apellido}"></h5>
                     <p class="card-text" th:text="${profesional.profesion}"></p>
                     <a href="#" class="btn btn-primary" th:text="${profesional.ciudad}"></a>
-                    <a class="btn btn-success"   type="submit" th:href="@{'/editarProfesional/' + ${profesional.idProfesional}}" >View</a>
+                    <a class="btn btn-success"   type="submit" th:href="@{'/editarProfesional/' + ${profesional.idProfesional}}" >View Perfil</a>
                     <a class="btn btn-danger"  th:href="@{'/eliminar/' + ${profesional.idProfesional}}" >Eliminar</a>
                 </div>
             </div>
         </div>
+    </div-->
+    <div class="row">
+        <div class="blog-card" th:each="profesional:${profesionales}">
+            <div class="meta">
+                <!--div class="photo" th:src="${profesional.imageUrl}"  style="background-image:  url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)"></div-->
+                <img class="photo" th:src="${profesional.imageUrl}">
+                <!--ul class="details">
+                    <li class="author"><a href="#">John Doe</a></li>
+                    <li class="date">Aug. 24, 2015</li>
+                    <li class="tags">
+                        <ul>
+                            <li><a href="#">Learn</a></li>
+                            <li><a href="#">Code</a></li>
+                            <li><a href="#">HTML</a></li>
+                            <li><a href="#">CSS</a></li>
+                        </ul>
+                    </li>
+                </ul-->
+            </div>
+            <div class="description">
+                <h1 th:text="${profesional.nombre}">Learning to Code</h1>
+                <h2 th:text="${profesional.apellido}">Opening a door to the future</h2>
+                <p th:text="${profesional.profesion}"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+                <p class="read-more">
+                    <a th:href="@{'/editarProfesional/' + ${profesional.idProfesional}}">Read More</a>
+                </p>
+            </div>
+        </div>
+        <!--div-- class="blog-card alt">
+            <div class="meta">
+                <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg)"></div>
+                <ul class="details">
+                    <li class="author"><a href="#">Jane Doe</a></li>
+                    <li class="date">July. 15, 2015</li>
+                    <li class="tags">
+                        <ul>
+                            <li><a href="#">Learn</a></li>
+                            <li><a href="#">Code</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="description">
+                <h1>Mastering the Language</h1>
+                <h2>Java is not the same as JavaScript</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+                <p class="read-more">
+                    <a href="#">Read More</a>
+                </p>
+            </div>
+        </div-->
     </div>
 </div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
 </body>
 
 </html>
