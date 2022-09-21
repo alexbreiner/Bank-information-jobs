@@ -25,8 +25,8 @@ public class ProfesionalDto implements Serializable {
     @Length(max = 40)
     private String profesion;
 
-    @Length( max = 40)
-    private int telefono;
+    @Length( max = 10)
+    private String telefono;
 
     @NotBlank()
     @Valid()

@@ -6,7 +6,6 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "profesional")
@@ -19,7 +18,7 @@ public class Profesional implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_profesional", nullable = false, unique = true)
+    @Column(name = "id_profesional", nullable = false, updatable = false)
     private Integer idProfesional;
 
     @NotNull
@@ -39,10 +38,9 @@ public class Profesional implements Serializable {
     private String profesion;
 
     @NotNull
-    @Min(1)
-    @Max(10)
+    @Length(max = 10)
     @Column(name = "telefono")
-    private int telefono;
+    private String telefono;
 
     @NotNull
     @NotBlank()

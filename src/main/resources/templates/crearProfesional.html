@@ -22,7 +22,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active text-black" aria-current="page" href="Nuevo">Buscar</a>
+                            <a class="nav-link active text-black" aria-current="page" th:href="@{home/buscarProfesional}">Buscar</a>
                         </li>
                         <li class="nav-item text-white">
                             <a class="nav-link text-black" th:href="@{/crearProfesional}">Personas</a>
@@ -60,8 +60,8 @@
                 <div class="card-body">
                     <form th:action="@{/saveProfesional}" th:object="${profesionalDto}"  method="POST">
                         <div class="form-group">
-                            <label type="number">Id profesional</label>
-                            <input type="number" name="idProfesional" class="form-control">
+                            <!-- <label type="number">Id profesional</label>
+                            <input type="number" name="idProfesional" class="form-control"> -->
                         </div>
                         <div class="form-group">
                             <label type="text">nombre</label>
@@ -72,8 +72,8 @@
                             <input type="text" name="apellido" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label type="number">telefono</label>
-                            <input type="number" name="telefono" class="form-control" required>
+                            <label type="text">telefono</label>
+                            <input type="text" name="telefono" class="form-control" required minlength="10" maxlength="10">
                         </div>
 
                         <div class="form-group">
