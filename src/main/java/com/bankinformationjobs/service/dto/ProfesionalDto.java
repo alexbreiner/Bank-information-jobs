@@ -22,7 +22,7 @@ public class ProfesionalDto implements Serializable {
     @Length(max = 40)
     private String apellido;
 
-    @Length(max = 40)
+    @Length(max = 255)
     private String profesion;
 
     @Length( max = 10)

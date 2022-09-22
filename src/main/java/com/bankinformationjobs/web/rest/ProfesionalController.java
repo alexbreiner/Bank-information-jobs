@@ -1,7 +1,7 @@
 package com.bankinformationjobs.web.rest;
 
 import com.bankinformationjobs.domain.entity.Profesional;
-import com.bankinformationjobs.service.IProfesionalService;
+import com.bankinformationjobs.service.ProfesionalService;
 import com.bankinformationjobs.service.dto.ProfesionalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +17,7 @@ import java.util.Optional;
 public class ProfesionalController {
 
     @Autowired
-    IProfesionalService profesionalService;
+    ProfesionalService profesionalService;
 
     @PostMapping("/professionals")
     public ResponseEntity create(@RequestBody ProfesionalDto profesionalDto) {

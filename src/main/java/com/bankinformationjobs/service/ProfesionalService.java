@@ -1,15 +1,12 @@
 package com.bankinformationjobs.service;
 
-
 import com.bankinformationjobs.domain.entity.Profesional;
 import com.bankinformationjobs.service.dto.ProfesionalDto;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import java.util.*;
 
-import java.util.List;
-import java.util.Optional;
-
-public interface IProfesionalService {
+public interface ProfesionalService {
 
     ResponseEntity<ProfesionalDto> crearProfesional(ProfesionalDto profesionalDto);
 

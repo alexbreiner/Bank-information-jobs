@@ -33,7 +33,7 @@ public class Profesional implements Serializable {
     private String apellido;
 
     @NotNull
-    @Length(max = 40)
+    @Length(max = 255)
     @Column(name = "profesion")
     private String profesion;
 

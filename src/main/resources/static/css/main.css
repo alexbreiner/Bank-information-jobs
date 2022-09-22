@@ -104,12 +104,14 @@ body {
     flex-grow: 0;
 }
 /*PEN STYLES*/
+.boxButton {
+    display: inherit;
+}
 * {
     box-sizing: border-box;
 }
 body {
-    background: #f1f1f1;
-    margin: .5rem;
+    background: #fff;
 }
 .blog-card {
     display: flex;
