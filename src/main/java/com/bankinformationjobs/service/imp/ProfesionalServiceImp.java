@@ -2,7 +2,7 @@ package com.bankinformationjobs.service.imp;
 
 import com.bankinformationjobs.domain.entity.Profesional;
 import com.bankinformationjobs.repository.ProfesionalRepository;
-import com.bankinformationjobs.service.IProfesionalService;
+import com.bankinformationjobs.service.ProfesionalService;
 import com.bankinformationjobs.service.dto.ProfesionalDto;
 import com.bankinformationjobs.service.mapper.ProfesionalMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class IProfesionalServiceImp implements IProfesionalService {
+public class ProfesionalServiceImp implements ProfesionalService {
 
     @Autowired
     ProfesionalRepository profesionalRepository;
@@ -33,11 +33,14 @@ public class IProfesionalServiceImp implements IProfesionalService {
             throw new RuntimeException("Profesional no encontrado.");
         }*/
 
-        // if (profesionalRepository.findById(profesionalDto.getIdProfesional()).isPresent()) {
-        //     return new ResponseEntity("El codigo del profesional ya existe", HttpStatus.BAD_REQUEST);
-        // } else {
-          return new ResponseEntity(ProfesionalMapper.getProfesionalDtoFromProfesional(profesionalRepository.save(profesional)), HttpStatus.OK);
+       /* if (profesionalRepository.findById(profesionalDto.getIdProfesional()).isPresent()) {
+            return new ResponseEntity("El codigo del profesional ya existe", HttpStatus.BAD_REQUEST);
+        } else {
+
+        */
+            return new ResponseEntity(ProfesionalMapper.getProfesionalDtoFromProfesional(profesionalRepository.save(profesional)), HttpStatus.OK);
         }
+
     
 
     @Override
