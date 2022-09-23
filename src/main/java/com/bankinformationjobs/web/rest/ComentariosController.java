@@ -23,10 +23,7 @@ public class ComentariosController {
     private ComentarioService comentarioService;
 
 
-    @GetMapping("/home/saveProfesional")
-    public String mostrarFormularioProfesional(Model modelo) {
-        return "crearProfesional";
-    }
+    
 
     @PostMapping("/saveComentario")
     public String guardarComentario(@ModelAttribute("comentariolDto") ComentarioDto comentarioDto) {
@@ -49,9 +46,6 @@ public class ComentariosController {
         model.addAttribute("comentarios", Comentarios);
         return "perfilProfesional";
     }
-    @GetMapping("/home/perfilProfesional")
-    public String mostrarPerfilProfesional(Model modelo) {
-        return "perfilProfesional";
-    }
+    
 
 }

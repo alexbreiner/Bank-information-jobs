@@ -4,7 +4,8 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-
+import java.util.HashSet;
+import java.util.Set;
 
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
@@ -69,9 +70,8 @@ public class Profesional implements Serializable {
     @Column(name = "imageUrl", length = 1000)
     private String imageUrl;
 
-    @OneToMany
-    @JoinColumn(name = "id_comentario", nullable = false, updatable = false)
-    private Comentario comentario;
-    
+    @OneToMany(mappedBy = "profesional", cascade = CascadeType.ALL)
+    private Set<Comentario> comentarios=new HashSet<>();
+
     
 }

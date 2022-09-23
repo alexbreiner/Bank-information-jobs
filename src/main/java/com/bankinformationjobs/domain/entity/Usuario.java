@@ -4,7 +4,8 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import lombok.*;
 
@@ -56,7 +57,6 @@ public class Usuario implements Serializable {
     @Column(name = "direccion")
     private String direccion;
 
-    @OneToMany
-    @JoinColumn(name = "id_comentario", nullable = false, updatable = false)
-    private Comentario comentario;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Set<Comentario> comentarios=new HashSet<>();
 }

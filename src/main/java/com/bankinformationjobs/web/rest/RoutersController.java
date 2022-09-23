@@ -95,7 +95,7 @@ public class RoutersController {
         return "perfilProfesional";
     }
     @GetMapping("/home/perfilProfesional")
-    public String mostrarPerfilProfesional(Model modelo) {
+    public String viewPerfilProfesional(Model modelo) {
         return "perfilProfesional";
     }
 
