@@ -29,9 +29,9 @@ public class ComentarioServiceImp implements ComentarioService {
     @Override
     public ResponseEntity<ComentarioDto> crearComentario(ComentarioDto comentarioDto) {
         Comentario comentario = ComentarioMapper.getComentarioFromComentarioDto(comentarioDto);
-        if (comentarioRepository.findById(comentario.getIdComentario()).isPresent()) {
-            return new ResponseEntity("El comentario ya exite", HttpStatus.BAD_REQUEST);
-        }
+        // if (comentarioRepository.findById(comentario.getIdComentario()).isPresent()) {
+        //     return new ResponseEntity("El comentario ya exite", HttpStatus.BAD_REQUEST);
+        // }
         return new ResponseEntity(ComentarioMapper.getComentarioDtoFromComentario(comentarioRepository.save(comentario)), HttpStatus.OK);
     }
 

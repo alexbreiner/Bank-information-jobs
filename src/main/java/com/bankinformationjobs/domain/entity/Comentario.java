@@ -31,7 +31,7 @@ public class Comentario implements Serializable {
     private Usuario usuario;
 
     @Min(1)
-    @Max(10)
+    @Max(5)
     @Column(name = "calificacion")
     private int calificacion;
 

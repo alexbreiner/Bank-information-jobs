@@ -87,4 +87,16 @@ public class RoutersController {
         return "redirect:/home";
     }
 
+    @RequestMapping("/perfilProfesional/{id}")
+    public String mostrarPerfilProfesional(Model model, @PathVariable(name = "id") Integer id) {
+
+        Profesional perfilProfesional = profesionalService.leerPerfil(id);
+        model.addAttribute("perfilPro", perfilProfesional);
+        return "perfilProfesional";
+    }
+    @GetMapping("/home/perfilProfesional")
+    public String mostrarPerfilProfesional(Model modelo) {
+        return "perfilProfesional";
+    }
+
 }

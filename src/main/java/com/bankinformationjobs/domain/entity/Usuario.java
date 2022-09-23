@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.List;
+
 import lombok.*;
 
 @Entity
@@ -53,4 +55,8 @@ public class Usuario implements Serializable {
     @Max(225)
     @Column(name = "direccion")
     private String direccion;
+
+    @OneToMany
+    @JoinColumn(name = "id_comentario", nullable = false, updatable = false)
+    private Comentario comentario;
 }

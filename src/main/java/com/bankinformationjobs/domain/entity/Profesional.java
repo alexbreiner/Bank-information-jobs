@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+
+
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -66,4 +68,10 @@ public class Profesional implements Serializable {
     @NotNull
     @Column(name = "imageUrl", length = 1000)
     private String imageUrl;
+
+    @OneToMany
+    @JoinColumn(name = "id_comentario", nullable = false, updatable = false)
+    private Comentario comentario;
+    
+    
 }
