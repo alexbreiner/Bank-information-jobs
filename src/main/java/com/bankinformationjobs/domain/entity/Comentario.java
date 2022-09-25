@@ -26,14 +26,8 @@ public class Comentario implements Serializable {
     private Integer idComentario;
 
 
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
-    @JoinColumn(name = "id_usuario")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Usuario usuario;
-    
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_profesional", nullable=false)
+    @JoinColumn(name="id_profesional")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Profesional profesional;
 
