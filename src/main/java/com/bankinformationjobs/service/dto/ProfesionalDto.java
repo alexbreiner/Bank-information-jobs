@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Getter
@@ -14,7 +15,7 @@ import java.io.Serializable;
 public class ProfesionalDto implements Serializable {
 
     @Length(min = 1)
-    private Integer idProfesional;
+    private Integer id;
 
     @Length(max = 40)
     private String nombre;
@@ -45,5 +46,7 @@ public class ProfesionalDto implements Serializable {
 
     @Length(max = 500)
     private String imageUrl;
+
+    
 
 }

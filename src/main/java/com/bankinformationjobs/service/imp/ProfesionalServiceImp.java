@@ -126,6 +126,13 @@ public class ProfesionalServiceImp implements ProfesionalService {
         return profesionalRepository.getById( id);
     }
 
+
+
+    
+
+
+    
+
     
 	
 

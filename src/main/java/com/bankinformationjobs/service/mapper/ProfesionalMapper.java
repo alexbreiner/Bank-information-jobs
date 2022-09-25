@@ -10,7 +10,7 @@ public class ProfesionalMapper {
             return null;
         }
         ProfesionalDto dto = new ProfesionalDto();
-        dto.setIdProfesional(profesional.getIdProfesional());
+        dto.setId(profesional.getId());
         dto.setNombre(profesional.getNombre());
         dto.setApellido(profesional.getApellido());
         dto.setProfesion(profesional.getProfesion());
@@ -20,6 +20,9 @@ public class ProfesionalMapper {
         dto.setBarrio(profesional.getBarrio());
         dto.setDireccion(profesional.getDireccion());
         dto.setImageUrl(profesional.getImageUrl());
+        
+        
+
 
         return dto;
     }
@@ -30,7 +33,7 @@ public class ProfesionalMapper {
         }
 
         Profesional profesional = new Profesional();
-        profesional.setIdProfesional(profesionalDto.getIdProfesional());
+        profesional.setId(profesionalDto.getId());
         profesional.setNombre(profesionalDto.getNombre());
         profesional.setApellido(profesionalDto.getApellido());
         profesional.setProfesion(profesionalDto.getProfesion());
@@ -40,6 +43,7 @@ public class ProfesionalMapper {
         profesional.setBarrio(profesionalDto.getBarrio());
         profesional.setDireccion(profesional.getDireccion());
         profesional.setImageUrl(profesionalDto.getImageUrl());
+        
 
         return profesional;
     }

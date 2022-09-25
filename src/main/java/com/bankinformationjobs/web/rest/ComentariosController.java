@@ -1,10 +1,13 @@
 package com.bankinformationjobs.web.rest;
 
+import com.bankinformationjobs.domain.entity.Comentario;
 import com.bankinformationjobs.domain.entity.Profesional;
 import com.bankinformationjobs.service.ComentarioService;
 import com.bankinformationjobs.service.ProfesionalService;
 import com.bankinformationjobs.service.dto.ComentarioDto;
 import com.bankinformationjobs.service.dto.ProfesionalDto;
+import com.bankinformationjobs.service.imp.ProfesionalServiceImp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
@@ -39,13 +42,18 @@ public class ComentariosController {
         return "redirect:/perfilProfesional";
     }
 
-    @GetMapping("/perfilProfesional/")
-    public String mostrarComentarios(Model model)  {
+    @RequestMapping("/comentatiosProfesional/{id}")
+    public String mostrarComentarios(Model model, @PathVariable(name = "id") Integer id) {
+        
+        List<Comentario> Comentarios = comentarioService.listComentarios(id);
 
-        List<ComentarioDto> Comentarios = comentarioService.readList();
-        model.addAttribute("comentarios", Comentarios);
+        model.addAttribute("comentario", Comentarios);
+        model.addAttribute("profesonalId", id);
+        
         return "perfilProfesional";
     }
+
     
+
 
 }

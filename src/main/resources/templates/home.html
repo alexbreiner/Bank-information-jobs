@@ -65,13 +65,13 @@
                 <h2 th:text="${profesional.apellido}"></h2>
                 <p th:text="${profesional.profesion}"></p>
                 <p class="read-more">
-                    <a th:href="@{'/editarProfesional/' + ${profesional.idProfesional}}">Edit</a>
+                    <a th:href="@{'/editarProfesional/' + ${profesional.id}}">Edit</a>
                     <!--a th:href="@{'/eliminar/' + ${profesional.idProfesional}}">Delete</a-->
                     <!-- Button trigger modal -->
                     <a  data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Eliminar
                     </a>
-                    <a   type="submit" th:href="@{'/perfilProfesional/' + ${profesional.idProfesional}}" >View</a>
+                    <a   type="submit" th:href="@{'/perfilProfesional/' + ${profesional.id}}" >View</a>
                     <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -85,7 +85,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <a th:href="@{'/eliminar/' + ${profesional.idProfesional}}"  type="button" class="btn btn-primary">Eliminar</a>
+                                <a th:href="@{'/eliminar/' + ${profesional.id}}"  type="button" class="btn btn-primary">Eliminar</a>
                             </div>
                         </div>
                     </div>

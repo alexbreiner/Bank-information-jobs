@@ -4,7 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
 import lombok.*;
@@ -22,14 +23,13 @@ public class Comentario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_comentario" , nullable = false, unique = true)
     private Integer idComentario;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_profesional")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="profesional_id",nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Profesional profesional;
+
 
     @Min(1)
     @Max(5)
