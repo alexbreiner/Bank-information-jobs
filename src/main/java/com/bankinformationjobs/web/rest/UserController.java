@@ -60,5 +60,9 @@ public class UserController {
         return "login";
     }
 
+    @GetMapping("/welcome")
+    public String landingPage(Model model) {
+        return "welcome";
+    }
 
 }
