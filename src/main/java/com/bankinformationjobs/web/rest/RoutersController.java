@@ -94,11 +94,10 @@ public class RoutersController {
     @RequestMapping("/perfilProfesional/{id}")
     public String mostrarPerfilProfesional(Model model, @PathVariable(name = "id") Integer id) {
         Profesional perfilProfesional = profesionalService.leerPerfil(id);
-        List<Comentario> Comentarios = comentarioService.listComentarios(id);
-
-        model.addAttribute("profesonalId", id);
-        model.addAttribute("comentario", Comentarios);
         model.addAttribute("perfilPro", perfilProfesional);
+        model.addAttribute("profesonalId", id);
+       
+        
         return "perfilProfesional";
     }
     @GetMapping("/home/perfilProfesional")

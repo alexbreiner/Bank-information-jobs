@@ -58,7 +58,8 @@ public class Profesional implements Serializable {
     @Column(name = "barrio")
     private String barrio;
 
-
+    @NotNull
+    @Length(max = 40)
     @Column(name = "direccion")
     private String direccion;
 

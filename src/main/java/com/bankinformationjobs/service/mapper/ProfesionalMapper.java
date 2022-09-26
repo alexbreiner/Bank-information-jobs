@@ -41,7 +41,7 @@ public class ProfesionalMapper {
         profesional.setCorreo(profesionalDto.getCorreo());
         profesional.setCiudad(profesionalDto.getCiudad());
         profesional.setBarrio(profesionalDto.getBarrio());
-        profesional.setDireccion(profesional.getDireccion());
+        profesional.setDireccion(profesionalDto.getDireccion());
         profesional.setImageUrl(profesionalDto.getImageUrl());
         
 
