@@ -112,7 +112,7 @@ public class ProfesionalTests {
     @Test
     @Rollback(value = false)
     @Order(7)
-    public void testEliminarProductos() {
+    public void testEliminarProfesionales() {
 
         Integer id = 22;
 

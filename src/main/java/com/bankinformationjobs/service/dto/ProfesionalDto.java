@@ -11,6 +11,8 @@ import java.io.Serializable;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProfesionalDto implements Serializable {
 
     @Length(min = 1)
