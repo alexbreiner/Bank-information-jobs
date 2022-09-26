@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon"  type="image/png" href="/img/businessman.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bank Information Jobs</title>
@@ -41,18 +40,24 @@
     <div class="row">
         <div class="blog-card" th:each="perfil:${perfilPro}">
             <div class="meta">
-                <img class="img-fluid" th:src="${perfil.imageUrl}" width="500" height="600" >
+                <img class="img-fluid" th:src="${perfil.imageUrl}" width="500" height="600"  >
             </div>
             <div class="description">
-                <h1 th:text="${perfil.nombre}"></h1>
+                <h1 th:text="${perfil.nombre}"></h1> 
                 <h2 th:text="${perfil.apellido}"></h2>
                 <h2 th:text="${perfil.telefono}"></h2>
-                <p th:text="${perfil.profesion}"></p>
+                <h2 th:text="${perfil.profesion}"></h2>
+                <br>
+                <h1>Ubicacion</h1>
+                <h2 th:text="${perfil.direccion}"></h2>
+                <h2 th:text="${perfil.ciudad}"></h2>
+                
+                
             </div>
         </div>
     </div>
 </div>
-<div class="container py-4">
+<!-- <div class="container py-4">
     <div class="row">
         <h1>Comentarios</h1>
         <div class="blog-card" th:each="comentario:${comentarios}">
@@ -63,7 +68,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <div class="container text-center">
     <div class="row g-3">
         <div sec:authorize="isAuthenticated()"></div>

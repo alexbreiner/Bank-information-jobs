@@ -27,21 +27,21 @@ public class ProfesionalTests {
     @Autowired
     private ProfesionalRepository profesionalRepository;
 
-    // @Test()
-    // @Rollback(value = false)
-    // @Order(1)
-    // public void testGuardarProfesional() {
+     @Test()
+     @Rollback(value = false)
+     @Order(1)
+     public void testGuardarProfesional() {
 
-    //     Profesional profesional = new Profesional(0,"Jesus", "Hurtado",
-    //             "Chofer","3125548632", "jesus@gmail.com", "palmira",
-    //             "parque amor", "calle 19",
-    //             "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1600");
+         Profesional profesional = new Profesional(0,"Jesus", "Hurtado",
+                 "Chofer","3125548632", "jesus@gmail.com", "palmira",
+                 "parque amor", "calle 19",
+                 "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1600");
 
-    //    Profesional professionalSave = profesionalRepository.save(profesional);
+        Profesional professionalSave = profesionalRepository.save(profesional);
 
-    //    assertNotNull(professionalSave);
+        assertNotNull(professionalSave);
 
-    // }
+     }
 
     @Test
     @Order(2)
@@ -81,20 +81,20 @@ public class ProfesionalTests {
     public void testActualizarProfesional() {
 
         final String nombreProfesional = "Jesus Miguel";
-        final int idProfesional = 18;
+        final int id = 18;
 
-        // Profesional profesional = new Profesional(0, nombreProfesional, "Hurtado Vidal",
-        //         "Chofer","3125548632", "jesus@gmail.com", "Palmira",
-        //         "independencia", "calle 19",
-        //         "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1600"); //valores nuevo
+         Profesional profesional = new Profesional(0, nombreProfesional, "Hurtado Vidal",
+                 "Chofer","3125548632", "jesus@gmail.com", "Palmira",
+                 "independencia", "calle 19",
+                 "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1600"); //valores nuevo
 
-        // profesional.setIdProfesional(idProfesional);
+         profesional.setId(id);
 
-        // profesionalRepository.save(profesional);
+         profesionalRepository.save(profesional);
 
-        // Optional<Profesional> profesionalActualizado = profesionalRepository.findProfesionalByNombre(nombreProfesional);
+         Optional<Profesional> profesionalActualizado = profesionalRepository.findProfesionalByNombre(nombreProfesional);
 
-        // assertThat(profesionalActualizado.get().getNombre()).isEqualTo(nombreProfesional);
+         assertThat(profesionalActualizado.get().getNombre()).isEqualTo(nombreProfesional);
 
     }
 
