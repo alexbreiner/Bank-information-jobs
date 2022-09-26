@@ -1,6 +1,8 @@
 package com.bankinformationjobs.web.rest;
 
+import com.bankinformationjobs.domain.entity.Comentario;
 import com.bankinformationjobs.domain.entity.Profesional;
+import com.bankinformationjobs.service.ComentarioService;
 import com.bankinformationjobs.service.ProfesionalService;
 import com.bankinformationjobs.service.dto.ProfesionalDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ public class RoutersController {
 
     @Autowired
     private ProfesionalService profesionalService;
+    @Autowired
+    private ComentarioService comentarioService;
 
     @GetMapping({"/home", "/"})
     public String index(Model modelo) {
@@ -85,6 +89,20 @@ public class RoutersController {
     public String eliminarProfesionl(@PathVariable(name = "id") Integer id ) {
         profesionalService.eliminarProfesional(id);
         return "redirect:/home";
+    }
+
+    @RequestMapping("/perfilProfesional/{id}")
+    public String mostrarPerfilProfesional(Model model, @PathVariable(name = "id") Integer id) {
+        Profesional perfilProfesional = profesionalService.leerPerfil(id);
+        model.addAttribute("perfilPro", perfilProfesional);
+        model.addAttribute("profesonalId", id);
+       
+        
+        return "perfilProfesional";
+    }
+    @GetMapping("/home/perfilProfesional")
+    public String viewPerfilProfesional(Model modelo) {
+        return "perfilProfesional";
     }
 
 }

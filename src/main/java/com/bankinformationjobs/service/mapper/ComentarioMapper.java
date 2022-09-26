@@ -13,7 +13,6 @@ public class ComentarioMapper {
         //set variables
         dto.setIdComentario(comentario.getIdComentario());
         dto.setProfesional(comentario.getProfesional());
-        dto.setUsuario(comentario.getUsuario());
         dto.setCalificacion(comentario.getCalificacion());
         dto.setComentario(comentario.getComentario());
         return dto;
@@ -28,7 +27,6 @@ public class ComentarioMapper {
 
         comentario.setIdComentario(comentarioDto.getIdComentario());
         comentario.setProfesional(comentarioDto.getProfesional());
-        comentario.setUsuario(comentarioDto.getUsuario());
         comentario.setComentario(comentario.getComentario());
         comentario.setCalificacion(comentario.getCalificacion());
         return comentario;

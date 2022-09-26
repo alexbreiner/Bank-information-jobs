@@ -27,4 +27,9 @@ public interface ProfesionalService {
      Optional<Profesional> getProfesionalById(Integer id);
 
      List<Profesional> listAll(String nombreAtributo);
+     
+     Profesional leerPerfil(Integer  id);
+
+     
+      
 }

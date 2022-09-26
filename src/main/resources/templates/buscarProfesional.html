@@ -25,23 +25,15 @@
                     <li class="nav-item text-white">
                         <a class="nav-link text-black" th:href="@{/home/saveProfesional}">Crear Personas</a>
                     </li>
-                    <li class="nav-item text-white">
-                        <a class="nav-link text-black" href="#">Trabajos</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Más
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#l">Crear Prefosional</a></li>
-                            <li><a class="dropdown-item" href="#"></a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
                 </ul>
-                <button class="btn btn-login" type="button" th:href="@{/login}" >Login</button>
-                <button class="btn btn-register " type="submit" th:href="@{/registro}">Sign up</button>
+                <div class="row">
+                    <div sec:authorize="isAuthenticated()">
+                        <form id="logoutForm" method="POST" th:action="@{/logout}">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        </form>
+                        <h4>Welcome <span sec:authentication="name"></span> | <a class="btn btn-primary" onclick="document.forms['logoutForm'].submit()">Logout</a></h4>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -83,7 +75,7 @@
                         </tr>
                     </thead>
                     <tr th:each="profesional : ${listaProfesionales}" th:if="${listaProfesionales}">
-                        <td th:text="${profesional.idProfesional}"></td>
+                        <td th:text="${profesional.id}"></td>
                         <td th:text="${profesional.nombre}"></td>
                         <td th:text="${profesional.profesion}"></td>
                         <td th:text="${profesional.correo}"></td>
@@ -93,8 +85,9 @@
                         <td th:text="${profesional.barrio}"></td>
 
                         <td>
-                            <a class="btn btn-success"   type="submit" th:href="@{'/editarProfesional/' + ${profesional.idProfesional}}" >View</a>
-                            <a class="btn btn-danger"  th:href="@{'/eliminar/' + ${profesional.idProfesional}}" >Delete</a>
+                            <a class="btn btn-info"   type="submit" th:href="@{'/perfilProfesional/' + ${profesional.id}}" >View</a>
+                            <a class="btn btn-success"   type="submit" th:href="@{'/editarProfesional/' + ${profesional.id}}" >Edit</a>
+                            <a class="btn btn-danger"  th:href="@{'/eliminar/' + ${profesional.id}}" >Delete</a>
                         </td>
                     </tr>
                 </table>

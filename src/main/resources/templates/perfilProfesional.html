@@ -18,15 +18,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active text-black" aria-current="page" th:href="@{home/buscarProfesional}">Buscar Profesional</a>
+                        <a class="nav-link active text-black" aria-current="page" th:href="@{/home/buscarProfesional}">Buscar Profesional</a>
                         <a class="nav-link active text-black" aria-current="page" ></a>
                     </li>
-                    <li class="nav-item text-white">
-                        <a class="nav-link text-black" th:href="@{/home/saveProfesional}">Crear Personas</a>
-                    </li>
-                    <!-- <li class="nav-item text-white">
-                        <a class="nav-link text-black" href="#">Trabajos</a>
-                    </li> -->
                 </ul>
                 <div class="row">
                     <div sec:authorize="isAuthenticated()">
@@ -45,48 +39,55 @@
 
 <div class="container py-4">
     <div class="row">
-        <div class="blog-card" th:each="profesional:${profesionales}">
+        <div class="blog-card" th:each="perfil:${perfilPro}">
             <div class="meta">
-                <img class="photo" th:src="${profesional.imageUrl}">
+                <img class="img-fluid" th:src="${perfil.imageUrl}" width="500" height="600" >
             </div>
             <div class="description">
-                <h1 th:text="${profesional.nombre}"></h1>
-                <h2 th:text="${profesional.apellido}"></h2>
-                <p th:text="${profesional.profesion}"></p>
-                <p >
-                    <a th:href="@{'/editarProfesional/' + ${profesional.id}}" class="btn btn-primary">Editar</a>
-                    <!-- <a th:href="@{'/eliminar/' + ${profesional.id}}">Delete</a> -->
-                    <!--Button trigger modal-->
-                    <a  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">
-                        Eliminar
-                    </a>
-                    <a   type="submit" th:href="@{'/perfilProfesional/' + ${profesional.id}}" class="btn btn-primary" >Ver Perfil</a>
-                    <!--modal--> 
-                </p>
+                <h1 th:text="${perfil.nombre}"></h1>
+                <h2 th:text="${perfil.apellido}"></h2>
+                <h2 th:text="${perfil.telefono}"></h2>
+                <p th:text="${perfil.profesion}"></p>
             </div>
         </div>
     </div>
 </div>
-<div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Desea Eliminar el profesional.
-            </div>
-            <div class="modal-footer" th:each="profesional:${profesionales}">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <a th:href="@{'/eliminar/' + ${profesional.id}}"  type="button" class="btn btn-primary">Eliminar</a>
+<div class="container py-4">
+    <div class="row">
+        <h1>Comentarios</h1>
+        <div class="blog-card" th:each="comentario:${comentarios}">
+            <div class="description">
+                
+                <h1 th:text="${comentario.calificacion}"></h1>
+                <h1 th:text="${comentario.comentario}"></h1>
             </div>
         </div>
     </div>
 </div>
-
+<div class="container text-center">
+    <div class="row g-3">
+        <div sec:authorize="isAuthenticated()"></div>
+            <!-- <form th:action="@{/saveComentario}" th:object="${comentarioDto}"  method="POST">
+                <div class="form-group  col-sm-3">
+                <input type="text" class="form-control" placeholder="Ciudad" aria-label="City">
+                    <label>Dejar comentario:</label>
+                    <br>
+                    <div>
+                        <div class="form-group">
+                            <input type="text" name="calificacion"  class="form-control" required minlength="1" maxlength="5" >
+                        </div>
+                    </div>
+                    <br>
+                <div class="form-group">
+                    <input type="text" name="comentario" size="50" class="form-control" required>
+                </div>
+                <div class="col-sm-3">
+                    <input type="submit" class="btn btn-primary " value="Enviar">
+                </div>
+                </div>
+            </form> -->
+        </div>
+    </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

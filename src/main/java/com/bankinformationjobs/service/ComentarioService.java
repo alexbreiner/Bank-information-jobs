@@ -18,6 +18,8 @@ public interface ComentarioService {
 
      void delete(Integer id);
 
+     List<Comentario> listComentarios(Integer id);
+
      List<ComentarioDto> readList();
 
 

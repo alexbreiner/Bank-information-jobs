@@ -18,8 +18,7 @@ public class Profesional implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_profesional", nullable = false, updatable = false)
-    private Integer idProfesional;
+    private Integer id;
 
     @NotNull
     @Length(max = 40)
@@ -59,11 +58,18 @@ public class Profesional implements Serializable {
     @Column(name = "barrio")
     private String barrio;
 
-
+    @NotNull
+    @Length(max = 40)
     @Column(name = "direccion")
     private String direccion;
 
     @NotNull
     @Column(name = "imageUrl", length = 1000)
     private String imageUrl;
+
+
+
+
+
+    
 }
