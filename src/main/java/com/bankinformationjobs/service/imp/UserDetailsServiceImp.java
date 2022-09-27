@@ -1,4 +1,4 @@
-package com.bankinformationjobs.service;
+package com.bankinformationjobs.service.imp;
 
 import com.bankinformationjobs.domain.entity.Role;
 import com.bankinformationjobs.domain.entity.User;
