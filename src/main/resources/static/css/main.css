@@ -103,7 +103,18 @@ body {
     order: 0;
     flex-grow: 0;
 }
-/*PEN STYLES*/
+.buscar {
+    width: 200px;
+}
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    width: 100%;
+}
+
 .boxButton {
     display: inherit;
 }
