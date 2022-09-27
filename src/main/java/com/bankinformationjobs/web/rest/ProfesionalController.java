@@ -3,13 +3,10 @@ package com.bankinformationjobs.web.rest;
 import com.bankinformationjobs.domain.entity.Profesional;
 import com.bankinformationjobs.service.ProfesionalService;
 import com.bankinformationjobs.service.dto.ProfesionalDto;
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +17,6 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class ProfesionalController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ProfesionalController.class);
     @Autowired
     ProfesionalService profesionalService;
 
@@ -63,7 +59,7 @@ public class ProfesionalController {
     @GetMapping("/profesional/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public Optional<Profesional> getProfesionalById(@PathVariable Integer id) {
-      //  LOG.info(new StringBuilder("User: ").append(principal.getName()).append(" requesting for person: ").append(id).toString());
+        //  LOG.info(new StringBuilder("User: ").append(principal.getName()).append(" requesting for person: ").append(id).toString());
 
         return profesionalService.getProfesionalById(id);
     }

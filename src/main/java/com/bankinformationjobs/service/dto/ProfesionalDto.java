@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class ProfesionalDto implements Serializable {
 
     @Length(min = 1)
-    private Integer idProfesional;
+    private Integer id;
 
     @Length(max = 40)
     private String nombre;

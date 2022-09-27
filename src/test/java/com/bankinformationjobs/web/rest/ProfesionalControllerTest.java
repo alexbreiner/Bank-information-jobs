@@ -54,7 +54,7 @@ public class ProfesionalControllerTest {
     public void setup() {
 
         Profesional mockProfesional = new Profesional();
-        mockProfesional.setIdProfesional(1);
+        mockProfesional.setId(1);
         mockProfesional.setNombre("Jesus");
         mockProfesional.setApellido("Hurtado");
         mockProfesional.setProfesion("Chofer");
@@ -64,7 +64,7 @@ public class ProfesionalControllerTest {
         mockProfesional.setBarrio("independencia");
         mockProfesional.setImageUrl("https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1600");
 
-        Mockito.when(profesionalRepositoryMock.findProfesionalByIdProfesional(1)).thenReturn(Optional.of(mockProfesional));
+        Mockito.when(profesionalRepositoryMock.findProfesionalById(1)).thenReturn(Optional.of(mockProfesional));
         //Mockito.when(profesionalService.getProfesionalById(1)).thenReturn(Optional.of(mockProfesional));
 
         //mockMvc.perform(post("/professionals").contentType());
@@ -130,7 +130,7 @@ public class ProfesionalControllerTest {
 
         ResponseEntity<ProfesionalDto> responseEntity;
         responseEntity = profesionalService.crearProfesional(profesionalDto);
-        Assertions.assertEquals("Negro", responseEntity.getBody().getIdProfesional());
+        Assertions.assertEquals("Negro", responseEntity.getBody().getId());
     }
 
     @Test

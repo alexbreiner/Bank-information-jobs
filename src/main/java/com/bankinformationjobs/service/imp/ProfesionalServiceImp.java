@@ -121,5 +121,9 @@ public class ProfesionalServiceImp implements ProfesionalService {
        // return profesionalRepository.findAll();
     }
 
+    @Deprecated
+    public Profesional leerPerfil(Integer id){
+        return profesionalRepository.getById( id);
+    }
 
 }

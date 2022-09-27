@@ -24,10 +24,6 @@ public class Solicitud implements Serializable {
     private Profesional profesional;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
-
-    @ManyToOne
     @JoinColumn(name = "id_servicio")
     private Servicio servicio;
 

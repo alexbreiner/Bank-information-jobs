@@ -13,11 +13,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,9 +26,9 @@ public class ComentarioServiceImp implements ComentarioService {
     @Override
     public ResponseEntity<ComentarioDto> crearComentario(ComentarioDto comentarioDto) {
         Comentario comentario = ComentarioMapper.getComentarioFromComentarioDto(comentarioDto);
-        if (comentarioRepository.findById(comentario.getIdComentario()).isPresent()) {
-            return new ResponseEntity("El comentario ya exite", HttpStatus.BAD_REQUEST);
-        }
+        // if (comentarioRepository.findById(comentario.getIdComentario()).isPresent()) {
+        //     return new ResponseEntity("El comentario ya exite", HttpStatus.BAD_REQUEST);
+        // }
         return new ResponseEntity(ComentarioMapper.getComentarioDtoFromComentario(comentarioRepository.save(comentario)), HttpStatus.OK);
     }
 
@@ -53,12 +50,16 @@ public class ComentarioServiceImp implements ComentarioService {
 
     @Override
     public void delete(Integer id) {
-
+        comentarioRepository.deleteById(id);
     }
-
 
     @Override
     public List<ComentarioDto> readList() {
         return comentarioRepository.findAll().stream().map(ComentarioMapper::getComentarioDtoFromComentario).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Comentario> listComentarios(Integer profesionalId) {
+        return comentarioRepository.findByProfesionalId(profesionalId);
     }
 }

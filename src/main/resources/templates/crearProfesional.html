@@ -21,33 +21,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active text-black" aria-current="page" th:href="@{home/buscarProfesional}">Buscar</a>
-                        </li>
-                        <li class="nav-item text-white">
-                            <a class="nav-link text-black" th:href="@{/crearProfesional}">Personas</a>
-                        </li>
-                        <li class="nav-item text-white">
-                            <a class="nav-link text-black" href="#">Trabajos</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                               aria-expanded="false">
-                                Más
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#l">Crear Prefosional</a></li>
-                                <li><a class="dropdown-item" href="#">Buscar Profesional</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+                            <a class="nav-link active text-black" aria-current="page" th:href="@{/home/buscarProfesional}">Buscar Profesional</a>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <button class="btn btn-register " type="submit">Sign up</button>
-                        <button class="btn btn-login" type="button">Login</button>
-                    </form>
+                    <div class="row">
+                        <div sec:authorize="isAuthenticated()">
+                            <form id="logoutForm" method="POST" th:action="@{/logout}">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            </form>
+                            <h4>Welcome <span sec:authentication="name"></span> | <a class="btn btn-primary" onclick="document.forms['logoutForm'].submit()">Logout</a></h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -59,15 +43,11 @@
                 <div class="card-body">
                     <form th:action="@{/saveProfesional}" th:object="${profesionalDto}"  method="POST">
                         <div class="form-group">
-                            <!-- <label type="number">Id profesional</label>
-                            <input type="number" name="idProfesional" class="form-control"> -->
-                        </div>
-                        <div class="form-group">
                             <label type="text">nombre</label>
                             <input type="text" name="nombre" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label type="text">apellido</label>s
+                            <label type="text">apellido</label>
                             <input type="text" name="apellido" class="form-control" required>
                         </div>
                         <div class="form-group">

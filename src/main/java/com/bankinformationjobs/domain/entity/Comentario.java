@@ -3,6 +3,10 @@ package com.bankinformationjobs.domain.entity;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.io.Serializable;
 import lombok.*;
 
@@ -19,19 +23,15 @@ public class Comentario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_comentario" , nullable = false, unique = true)
     private Integer idComentario;
 
-    @ManyToOne
-    @JoinColumn(name = "id_profesional")
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="profesional_id",nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Profesional profesional;
 
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
-
     @Min(1)
-    @Max(10)
+    @Max(5)
     @Column(name = "calificacion")
     private int calificacion;
 

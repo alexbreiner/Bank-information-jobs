@@ -43,7 +43,6 @@ public interface ProfesionalRepository extends JpaRepository<Profesional, Intege
      +"OR p.correo LIKE %?1%")
      List<Profesional> findAll(@Param("nombreAtributo") String nombreAtributo);
 
-     //Optional<Profesional> findProfesionalById(Integer idProfesional);
 
     Optional<Profesional> findProfesionalByIdProfesional(Integer id);
 }

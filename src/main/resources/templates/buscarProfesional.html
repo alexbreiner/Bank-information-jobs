@@ -23,25 +23,17 @@
                         <a class="nav-link active text-black" aria-current="page" th:href="@{home/buscarProfesional}"></a>
                     </li>
                     <li class="nav-item text-white">
-                        <a class="nav-link text-black" th:href="@{/home/saveProfesional}">Crear Personas</a>
-                    </li>
-                    <li class="nav-item text-white">
-                        <a class="nav-link text-black" href="#">Trabajos</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Más
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#l">Crear Prefosional</a></li>
-                            <li><a class="dropdown-item" href="#"></a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                        <a class="nav-link text-black" th:href="@{/home/saveProfesional}">Crear Profesional</a>
                     </li>
                 </ul>
-                <button class="btn btn-login" type="button" th:href="@{/login}" >Login</button>
-                <button class="btn btn-register " type="submit" th:href="@{/registro}">Sign up</button>
+                <div class="row">
+                    <div sec:authorize="isAuthenticated()">
+                        <form id="logoutForm" method="POST" th:action="@{/logout}">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        </form>
+                        <h4>Welcome <span sec:authentication="name"></span> | <a class="btn btn-primary" onclick="document.forms['logoutForm'].submit()">Logout</a></h4>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -83,7 +75,7 @@
                         </tr>
                     </thead>
                     <tr th:each="profesional : ${listaProfesionales}" th:if="${listaProfesionales}">
-                        <td th:text="${profesional.idProfesional}"></td>
+                        <td th:text="${profesional.id}"></td>
                         <td th:text="${profesional.nombre}"></td>
                         <td th:text="${profesional.profesion}"></td>
                         <td th:text="${profesional.correo}"></td>
@@ -91,48 +83,19 @@
                         <td th:text="${profesional.direccion}"></td>
                         <td th:text="${profesional.ciudad}"></td>
                         <td th:text="${profesional.barrio}"></td>
-
                         <td>
-                            <a class="btn btn-success"   type="submit" th:href="@{'/editarProfesional/' + ${profesional.idProfesional}}" >View</a>
-                            <a class="btn btn-danger"  th:href="@{'/eliminar/' + ${profesional.idProfesional}}" >Delete</a>
+                            <a class="btn btn-info"   type="submit" th:href="@{'/perfilProfesional/' + ${profesional.id}}" >View</a>
+                            <a class="btn btn-success"   type="submit" th:href="@{'/editarProfesional/' + ${profesional.id}}" >Edit</a>
+                            <a class="btn btn-danger"  th:href="@{'/eliminar/' + ${profesional.id}}" >Delete</a>
                         </td>
                     </tr>
                 </table>
             </div>
             <h1 th:if="${listaProfesionales.isEmpty()}">
                 <div class="alert alert-warnning" type="alert">
-                    La lista de personas está vacía.
+                    La lista de profesionales está vacía.
                 </div>
             </h1>
-            <!--
-
-                    <div class="col-md-12 col-lg-6 col-12 col-sm-12">
-            <div class="card" >
-                <img src="" class="card-img-top" alt="Aqui va una imagen">
-
-                <div class="card-body">
-                    <h5 class="card-title"> Nombre</h5>
-                    <p class="card-text" >Profesion</p>
-                    <p class="card-text" >Ciudad</p>
-                    <a href="#" class="btn btn-primary">Contactar</a>
-                    <a href="#" class="btn btn-primary">Ver Perfil</a>
-                </div>
-            </div>
-        </div>
-
-                        <div  class="card"  th:each="profesional:${listaProfesionales}">
-                <p th:if="*{listaProfesionales}" ></p>
-                <img th:src="${profesional.imageUrl}"  class="card-img-top" alt="Aqui va una imagen">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${profesional.nombre}" ></h5>
-                    <h5 th:text="${profesional.apellido}"></h5>
-                    <p class="card-text" th:text="${profesional.profesion}"></p>
-                    <a href="#" class="btn btn-primary" th:text="${profesional.ciudad}"></a>
-                    <a class="btn btn-success"   type="submit" th:href="@{'/editarProfesional/' + ${profesional.idProfesional}}" >View</a>
-                    <a class="btn btn-danger"  th:href="@{'/eliminar/' + ${profesional.idProfesional}}" >Eliminar</a>
-                </div>
-            </div>
-            --->
         </div>
     </div>
 </div>
