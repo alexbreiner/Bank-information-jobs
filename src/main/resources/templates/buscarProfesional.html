@@ -39,26 +39,24 @@
     </nav>
 </header>
 
-<div class="container text-center">
+<div class="container text-left">
+    <h1 class="mt-4">Filtrar Profesionales</h1>
     <div class="row g-3">
         <form class="form-inline" th:action="@{/home/buscarProfesional}">
-            <div class="form-group  col-sm-2">
-               <!---<input type="text" class="form-control" placeholder="Ciudad" aria-label="City">-->
-                <label>Buscar:</label>
-            </div>
-            <div class="form-group col-md-4">
-                <input type="text" name="palabraClave" id="palabraClave" class="form-control" th:value="${palabraClave}"
-                       placeholder="Bigite el valor a buscar" required aria-label="State">
-            </div>
-            <div class="col-sm-3">
-                <input type="submit" class="btn btn-primary " value="Buscar">
-                <input type="submit" class="btn btn-warnning mb-2" value="Limpiar">
+            <div class="row">
+                <div class="form-group col-md-5">
+                    <input type="text" name="palabraClave" id="palabraClave" class="form-control" th:value="${palabraClave}"
+                           placeholder="Bigite el valor a buscar" required aria-label="State">
+                </div>
+                <div class=" form-group col-md-6">
+                    <input type="submit" class="btn btn-primary buscar " value="Buscar">
+                </div>
             </div>
         </form>
     </div>
+
     <div class="row py-3">
         <div class="container justify-content-center pt-4">
-            <h1 class="mt-4 text-left">Listado de Profesionales</h1>
             <div th:if="${listaProfesionales != null}">
                 <table class="table">
                     <thead class="table-dark">
@@ -94,38 +92,9 @@
             </div>
             <h1 th:if="${listaProfesionales.isEmpty()}">
                 <div class="alert alert-warnning" type="alert">
-                    La lista de personas está vacía.
+                    La lista de profesionales está vacía.
                 </div>
             </h1>
-            <!--
-
-                    <div class="col-md-12 col-lg-6 col-12 col-sm-12">
-            <div class="card" >
-                <img src="" class="card-img-top" alt="Aqui va una imagen">
-
-                <div class="card-body">
-                    <h5 class="card-title"> Nombre</h5>
-                    <p class="card-text" >Profesion</p>
-                    <p class="card-text" >Ciudad</p>
-                    <a href="#" class="btn btn-primary">Contactar</a>
-                    <a href="#" class="btn btn-primary">Ver Perfil</a>
-                </div>
-            </div>
-        </div>
-
-                        <div  class="card"  th:each="profesional:${listaProfesionales}">
-                <p th:if="*{listaProfesionales}" ></p>
-                <img th:src="${profesional.imageUrl}"  class="card-img-top" alt="Aqui va una imagen">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${profesional.nombre}" ></h5>
-                    <h5 th:text="${profesional.apellido}"></h5>
-                    <p class="card-text" th:text="${profesional.profesion}"></p>
-                    <a href="#" class="btn btn-primary" th:text="${profesional.ciudad}"></a>
-                    <a class="btn btn-success"   type="submit" th:href="@{'/editarProfesional/' + ${profesional.idProfesional}}" >View</a>
-                    <a class="btn btn-danger"  th:href="@{'/eliminar/' + ${profesional.idProfesional}}" >Eliminar</a>
-                </div>
-            </div>
-            --->
         </div>
     </div>
 </div>
@@ -148,6 +117,10 @@
         </div>
     </div>
 </div>
+<footer class="container">
+    <p class="float-end"><a href="#">BANKJOBS</a></p>
+    <p>© 2022 Bank information jobs, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
