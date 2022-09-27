@@ -95,4 +95,8 @@ public class RoutersController {
         return "perfilProfesional";
     }
 
+    @RequestMapping("/welcome")
+    public String landing() {
+        return "welcome";
+    }
 }
