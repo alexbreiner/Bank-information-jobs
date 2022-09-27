@@ -56,7 +56,7 @@ public class ProfesionalTests {
     @Test
     @Order(3)
     public void testBuscarProfesionalPorProfesion() {
-        String profesion = "Desarrollador Software";
+        String profesion = "Desarrollador de Software";
 
         Optional<Profesional> profesional = profesionalRepository.findProfesionalByProfesion(profesion);
         //validar que sea exactamente el nombre
@@ -67,7 +67,7 @@ public class ProfesionalTests {
     @Test
     @Order(4)
     public void testBuscarProfesionalPorNombreNoExistente() {
-        String nombre = "Miguel";
+        String nombre = "Breiner";
 
         Optional<Profesional> profesional = profesionalRepository.findProfesionalByNombre(nombre);
 
@@ -80,7 +80,7 @@ public class ProfesionalTests {
     @Rollback(value = false)
     public void testActualizarProfesional() {
 
-        final String nombreProfesional = "Jesus Miguel";
+        final String nombreProfesional = "Jesus Antonio";
         final int id = 18;
 
          Profesional profesional = new Profesional(0, nombreProfesional, "Hurtado Vidal",
