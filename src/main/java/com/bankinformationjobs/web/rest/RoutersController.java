@@ -31,16 +31,6 @@ public class RoutersController {
         return "home";
     }
 
-    @GetMapping("/home/login")
-    public String login(Model model) {
-        return "login";
-    }
-
-    @GetMapping("/home/registro")
-    public String Registro(Model model) {
-        return "registro";
-    }
-
     @GetMapping("/home/profesionalPaginates")
     public String profesionalesPaginates(Model modelo, @RequestParam("pageNumber") Integer pageNumber, @RequestParam Integer pageSize) {
         Page pages =  profesionalService.listarProfesionalesPaginados(pageSize, pageNumber);
