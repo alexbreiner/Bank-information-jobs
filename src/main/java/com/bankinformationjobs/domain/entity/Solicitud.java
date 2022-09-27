@@ -20,7 +20,7 @@ public class Solicitud implements Serializable {
     private Integer idSolicitud;
 
     @ManyToOne
-    @JoinColumn(name = "id_profesional")
+    @JoinColumn(name = "id")
     private Profesional profesional;
 
     // @ManyToOne
