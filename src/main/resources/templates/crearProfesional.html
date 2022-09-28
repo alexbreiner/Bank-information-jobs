@@ -15,13 +15,19 @@
 <div class="container">
     <header>
         <nav class="navbar navbar-expand-lg ">
-            <div class="container">
-                <a class="navbar-brand text-white title" th:href="@{/home}" href="">BANKJOBS</a>
-
+            <div class="container-fluid">
+                <a class="navbar-brand text-white title" th:href="@{/home}" >BANKJOBS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active text-black" aria-current="page" th:href="@{/home/buscarProfesional}">Buscar Profesional</a>
+                            <a class="nav-link active text-black" aria-current="page" th:href="@{home/buscarProfesional}">Buscar Profesional</a>
+                            <a class="nav-link active text-black" aria-current="page" ></a>
+                        </li>
+                        <li class="nav-item text-white">
+                            <a class="nav-link text-black" th:href="@{/home/saveProfesional}">Crear Profesional</a>
                         </li>
                     </ul>
                     <div class="row">
@@ -29,9 +35,8 @@
                             <form id="logoutForm" method="POST" th:action="@{/logout}">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             </form>
-                            <h4>Welcome <span sec:authentication="name"></span> | <a class="btn btn-primary" onclick="document.forms['logoutForm'].submit()">Logout</a></h4>
+                            <h4>Usuario: <span sec:authentication="name"></span> | <a class="btn btn-primary" onclick="document.forms['logoutForm'].submit()">Logout</a></h4>
                         </div>
-                    </div>
                 </div>
             </div>
         </nav>
